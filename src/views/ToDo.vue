@@ -50,6 +50,7 @@
     },
     methods: {
       ...mapActions(['addTodo']),
+      
       handleAddTodo() {
         if (this.newTodoName.trim() !== '' && this.newTodoCategory.trim() !== '') {
           const newTodo = {

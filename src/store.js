@@ -20,7 +20,13 @@ const store = createStore({
     },
     addShoppingItem(state, item) {
       state.shoppingItems.push(item);
-    }
+    },
+    removeShoppingItem(state, index) {
+      state.shoppingItems.splice(index, 1);
+    },
+    editShoppingItem(state, { index, item }) {
+      state.shoppingItems[index] = item;
+    },
   },
   actions: {
     toggleState({ commit }) {
@@ -34,7 +40,13 @@ const store = createStore({
     },
     addShoppingItem({ commit }, item) {
       commit('addShoppingItem', item);
-    }
+    },
+    removeShoppingItem({ commit }, index) {
+      commit('removeShoppingItem', index);
+    },
+    editShoppingItem({ commit }, { index, item }) {
+      commit('editShoppingItem', { index, item });
+    },
   },
   getters: {
     isActive(state) {
@@ -48,7 +60,8 @@ const store = createStore({
     },
     shoppingItems(state) {
       return state.shoppingItems;
-    }
+    },
+
   }
 });
 
