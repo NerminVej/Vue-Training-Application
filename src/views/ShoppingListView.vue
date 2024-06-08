@@ -31,9 +31,10 @@
 <div>
    <h1 class="text-4xl font-bold text-teal-600 pt-8">Shopping List</h1>
    <div>
-    <li v-for="(item, index) in shoppingList" :key="index" class="mb-2">
+    <li v-for="(item, index) in shoppingItems" :key="index" class="mb-2">
 {{ item.name }} - {{ item.quantity }} - {{ item.category }}
-
+<button @click="removeShoppingItem(index)">Remove</button>
+<button @click="editShoppingItem(index)">Edit</button>
         </li>
    </div>
 </div>
@@ -53,10 +54,10 @@
         }
     },
     computed: {
-      ...mapState(['shoppingList'])
+      ...mapState(['shoppingItems'])
     },
     methods: {
-      ...mapActions(['addShoppingItem']),
+    ...mapActions(['addShoppingItem', 'removeShoppingItem', 'editShoppingItem']),
 
       handleAddingShoppingItem() {
         console.log("test")
@@ -72,6 +73,13 @@
         this.category = "";
     }
     },
+    deleteShoppingItem(index) {
+        this.removeShoppingItem(index);
+    },
+    editingShoppingItem(index) {
+        this.editShoppingItem(index);
+    }
+
 
    
   }
